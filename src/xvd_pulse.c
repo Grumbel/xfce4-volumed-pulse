@@ -338,7 +338,7 @@ xvd_notify_volume_callback (pa_context *c,
   if (r_oldv == 100 && r_curv >= r_oldv)
     xvd_notify_overshoot_notification (i);
   /* trying to go below 0 */
-  else if (r_oldv == 0 && r_curv <= r_oldv)
+  else if (r_oldv == 0 && r_curv == 0)
    xvd_notify_undershoot_notification (i);
   /* normal */
   else
