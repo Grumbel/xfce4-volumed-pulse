@@ -156,18 +156,8 @@ xvd_notify_init(XvdInstance *Inst,
 		g_list_free (caps_list);
 	}
 
-#ifdef NOTIFY_CHECK_VERSION
-#if NOTIFY_CHECK_VERSION (0, 7, 0)
 	Inst->notification = notify_notification_new ("Xfce4-Volumed", NULL, NULL);
 	Inst->notification_mic = notify_notification_new ("Xfce4-Volumed", NULL, NULL);
-#else
-	Inst->notification = notify_notification_new ("Xfce4-Volumed", NULL, NULL, NULL);
-	Inst->notification_mic = notify_notification_new ("Xfce4-Volumed", NULL, NULL, NULL);
-#endif
-#else
-	Inst->notification = notify_notification_new ("Xfce4-Volumed", NULL, NULL, NULL);
-	Inst->notification_mic = notify_notification_new ("Xfce4-Volumed", NULL, NULL, NULL);
-#endif
 }
 
 void
