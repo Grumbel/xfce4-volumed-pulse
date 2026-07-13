@@ -173,9 +173,7 @@ xvd_notify_init(XvdInstance *Inst,
 void
 xvd_notify_uninit (XvdInstance *Inst)
 {
-	g_object_unref (G_OBJECT (Inst->notification));
-	Inst->notification = NULL;
-	g_object_unref (G_OBJECT (Inst->notification_mic));
-	Inst->notification_mic = NULL;
+	g_clear_object (&Inst->notification);
+	g_clear_object (&Inst->notification_mic);
 	notify_uninit ();
 }

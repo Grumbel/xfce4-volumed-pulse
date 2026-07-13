@@ -108,18 +108,9 @@ xvd_open_pulse (XvdInstance *i)
 void
 xvd_close_pulse (XvdInstance *i)
 {
-  if (i->reconnect_id != 0)
-    {
-      g_source_remove(i->reconnect_id);
-      i->reconnect_id = 0;
-    }
-  if (i->pulse_context)
-    {
-      pa_context_unref (i->pulse_context);
-      i->pulse_context = NULL;
-    }
-  pa_glib_mainloop_free (i->pa_main_loop);
-  i->pa_main_loop = NULL;
+  g_clear_handle_id (&i->reconnect_id, g_source_remove);
+  g_clear_pointer (&i->pulse_context, pa_context_unref);
+  g_clear_pointer (&i->pa_main_loop, pa_glib_mainloop_free);
 }
 
 
